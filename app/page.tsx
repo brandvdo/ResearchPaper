@@ -23,7 +23,6 @@ export default function Home() {
 
   return (
     <>
-      <p>Random value: {random}</p>
       <PageComponent />
     </>
   );
