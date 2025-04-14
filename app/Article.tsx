@@ -1,14 +1,28 @@
+"use client";
+
+import { useEffect } from "react";
+
 interface ArticleProps {
   darkMode: boolean;
 }
 
 
 export default function Article({ darkMode }: ArticleProps) {
+
+  useEffect(() => {
+    // Dynamically set the background color for the entire page
+    document.documentElement.style.backgroundColor = darkMode ? "#121212" : "white";
+    document.body.style.backgroundColor = darkMode ? "#121212" : "white";
+    document.documentElement.style.color = darkMode ? "white" : "#1a202c";
+    document.body.style.color = darkMode ? "white" : "#1a202c";
+  }, [darkMode]);
+
   return (
     <div
       className={`max-w-3xl mx-auto p-6 ${
         darkMode ? "bg-[#121212] text-white" : "bg-white text-gray-900"
       }`}
+      style={{marginTop: "100px", marginBottom: "100px"}}
     >
       <h1 className="text-3xl font-bold mb-4">Why Does Venus Spin Backwards?</h1>
 
