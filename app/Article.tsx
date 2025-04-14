@@ -22,7 +22,12 @@ export default function Article({ darkMode }: ArticleProps) {
       className={`max-w-3xl mx-auto p-6 ${
         darkMode ? "bg-[#121212] text-white" : "bg-white text-gray-900"
       }`}
-      style={{marginTop: "100px", marginBottom: "100px"}}
+      style={{
+        minHeight: "100vh", // Ensure the div spans the full height of the viewport
+        display: "flex", // Center content vertically
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
     >
       <h1 className="text-3xl font-bold mb-4">Why Does Venus Spin Backwards?</h1>
 

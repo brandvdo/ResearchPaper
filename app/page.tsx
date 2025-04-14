@@ -11,5 +11,10 @@ export default function Home() {
     random === 1 ? import("./light") : import("./dark")
   );
 
-  return <PageComponent />;
+  return (
+    <>
+      <p>Random value: {random}</p>
+      <PageComponent />
+    </>
+  );
 }
