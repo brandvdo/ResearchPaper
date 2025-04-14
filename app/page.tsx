@@ -1,15 +1,25 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [random] = useState(() => Math.random() < 0.5 ? 0 : 1);
+  const [random, setRandom] = useState<number | null>(null);
+  const [PageComponent, setPageComponent] = useState<any>(null);
 
+  useEffect(() => {
+    const value = Math.random() < 0.5 ? 0 : 1;
+    setRandom(value);
 
-  const PageComponent = dynamic(() =>
-    random === 1 ? import("./light") : import("./dark")
-  );
+    const loadComponent = async () => {
+      const mod = value === 1 ? await import("./light") : await import("./dark");
+      setPageComponent(() => mod.default);
+    };
+
+    loadComponent();
+  }, []);
+
+  if (random === null || PageComponent === null) return <p>Loading...</p>;
 
   return (
     <>
